@@ -17,6 +17,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换夜间模式" style:UIBarButtonItemStylePlain target:self action:@selector(changeNightSchema:)];
+    
+}
+
+- (void)changeNightSchema:(UIBarButtonItem *)sender
+{
+    NSLog(@"切换夜间模式%@", NSStringFromSelector(sender.action));
+    sender.action = @selector(changeNormal:);
+    sender.title = @"切换普通模式";
+
+    
+}
+
+- (void)changeNormal:(UIBarButtonItem *)sender
+{
+    NSLog(@"切换普通模式%@", NSStringFromSelector(sender.action));
+    sender.title = @"切换夜间模式";
+    sender.action = @selector(changeNightSchema:);
+    
 }
 
 - (void)didReceiveMemoryWarning {
